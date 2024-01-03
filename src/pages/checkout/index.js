@@ -68,6 +68,9 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
   const [discount, setDiscount] = React.useState(null);
   const keyboard = React.useRef();
 
+  //Added by Afsal
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
   // console.log(globalSettings);
 
   useEffect(() => {
@@ -195,6 +198,13 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
 
 
   const payout = async () => {
+    if (isButtonDisabled) {
+      return; // Prevent double-click if the button is already disabled
+    }
+    // Disable the button to prevent double-click
+    setIsButtonDisabled(true);
+
+
     try {
       if (!selectedProductList.length) {
         return;
@@ -301,6 +311,9 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
       // console.log(paymentMode.data.data || []).map(i => ({ ...i, key: `paymentMode__${i.name.replace(' ', '_')}`, default_paymenttype: i.default_paymenttype === true?i.default_paymenttype === true:i.id === 1, value: 0 }))
     } catch (error) {
       alert(error?.response?.message || error?.message)
+    } finally {
+      // Enable the button after the asynchronous operation is completed
+      setIsButtonDisabled(false);
     }
   }
 
@@ -764,6 +777,7 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
                     className="btn btn-primary"
                     sx={{ borderColor: '#fff', color: '#fff', height: '100%', width: '100%', flexDirection: 'column' }}
                     onClick={() => payout(true)}
+                    disabled={isButtonDisabled}
                   >
                     <Typography style={{ fontSize: 20, fontWeight: 'bold' }} > Pay </Typography>
 
