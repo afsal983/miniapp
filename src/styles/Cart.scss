@@ -1,0 +1,658 @@
+.cart-left-portion {
+    height: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    box-sizing: border-box;
+  
+    @media screen and (max-width: 767px) {
+      height: auto;
+    }
+  
+    .cart-final-amount {
+      background-color: $PrimaryColor;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      color: #fff;
+  
+      .MuiTypography-root {
+        font-size: 18px;
+        padding: 10px 15px;
+        letter-spacing: 2px;
+  
+        &.total-amount {
+          text-align: right;
+        }
+      }
+    }
+  
+    .checkout-final-amount {
+      background-color: $PrimaryColor;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 10px 0px;
+  
+      .MuiTypography-root {
+        font-size: 16px;
+        color: #fff;
+        padding: 7px 15px;
+  
+        &.total-amount {
+          text-align: center;
+        }
+      }
+    }
+  }
+  
+  .react-simple-keyboard {
+    &.hg-layout-numbers {
+      max-width: 100%;
+      // margin-left: 5%;
+  
+      .hg-rows {
+        .hg-row {
+          .hg-button {}
+        }
+      }
+    }
+  }
+  
+  .react-simple-keyboard {
+    &.hg-layout-number {
+      max-width: 508px;
+      margin-left: 5%;
+  
+      .hg-rows {
+        .hg-row {
+          .hg-button {}
+        }
+      }
+    }
+  }
+  
+  .cart-header {
+    .MuiGrid-container {
+      align-items: center;
+    }
+  
+    .cart-header-inner {
+      @media screen and (max-width: 767px) {
+        display: block !important;
+        margin-bottom: 50px;
+      }
+    }
+  }
+  
+  .main-table {
+    @media screen and (max-width: 767px) {
+      min-width: 100% !important;
+    }
+  }
+  
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    img {
+      background-color: transparent;
+    }
+  }
+  
+  .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    background-color: $PrimaryColor;
+    color: #fff !important;
+    border: 1px solid $PrimaryColor;
+  }
+  
+  .account-credential {
+    display: flex;
+    align-items: center;
+  
+    @media screen and (max-width: 767px) {
+      display: block !important;
+    }
+  
+    .accountHead1 {
+      font-size: 14px;
+      padding: 0px 7px;
+    }
+  
+    .account-filled-info {
+      background-color: $PrimaryColor;
+      font-size: 12px;
+      line-height: 12px;
+      padding: 10px;
+      text-align: center;
+      border-radius: 3px;
+      width: 13rem;
+      cursor: pointer;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+  }
+  
+  .cart-brand-logo {
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .cart-footer-action {
+    justify-content: space-between;
+    padding-bottom: 0px;
+  
+    @media screen and (max-width: 767px) {
+      display: block !important;
+    }
+  
+    .MuiGrid-root {
+      max-width: 48%;
+      flex-basis: 48%;
+  
+      @media screen and (max-width: 767px) {
+        max-width: 100%;
+        flex-basis: 100%;
+      }
+  
+      .btn {
+        width: 100%;
+        font-size: 16px !important;
+        height: 50px;
+        font-family: 'Inter', sans-serif !important;
+        box-shadow: none !important;
+        border-radius: 0px;
+        letter-spacing: 2px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+          rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      }
+    }
+  
+    .MuiGrid-item {
+      &:nth-child(2) {
+        @media screen and (max-width: 767px) {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  
+  .MuiTableCell-body {
+    .form-control {
+      height: 40px;
+      border: 1px solid lightgrey;
+      max-width: 70px;
+      text-align: center;
+    }
+  }
+  
+  .main-table {
+    thead {
+      th {
+        background-color: $PrimaryColor;
+      }
+    }
+  
+    th {
+      padding: 10px !important;
+    }
+  
+    td {
+      padding: 10px !important;
+    }
+  }
+  
+  // Table
+  .checkout-item-table-box {
+    min-height: calc(100vh - 370px);
+    padding-bottom: 15px;
+    box-sizing: border-box;
+  
+    @media screen and (max-width: 767px) {
+      min-height: auto;
+    }
+  
+    .MuiPaper-root {
+      max-height: calc(100vh - 370px);
+      box-shadow: none;
+  
+      @media screen and (max-width: 767px) {
+        min-height: auto;
+      }
+    }
+  
+    .MuiTable-root {
+      .MuiTableBody-root {
+        height: 100%;
+        overflow: auto;
+      }
+    }
+  }
+  
+  .cart-item-table-box {
+    height: auto;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+  
+    // @media screen and (max-width: 767px) {
+    //   min-height: auto;
+    // }
+  
+    .MuiPaper-root {
+      min-height: auto;
+      max-height: calc(115vh - 200px);
+  
+    //   @media (min-width: 1400px) and (max-width: 2500px) {
+    //     // height: 65vh;
+    //     max-height: calc(115vh - 450px);
+    //   }
+    @media screen and (max-width: 1400px){
+        // max-height: calc(115vh - 480px);
+        height: 65vh;
+    }
+  
+    }
+  
+    .MuiTable-root {
+      .MuiTableBody-root {
+        height: 100%;
+        overflow: auto;
+      }
+    }
+  }
+  
+  .cart-items-listD {
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  
+    .cart-item-tabs {
+      height: 34rem;
+      padding: 10px 10px 5px 10px;
+      background: #f5f5f5;
+      box-sizing: border-box;
+  
+      .MuiTabs-root {
+        .MuiTabs-scroller {
+          .MuiTabs-flexContainer {
+            .MuiButtonBase-root {
+              border: 1px solid #eee;
+              background-color: #fff;
+              font-size: 15px;
+              font-weight: 600;
+              text-transform: capitalize;
+  
+              &.Mui-selected {}
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .tab-content-pc {
+    .MuiBox-root {
+      padding: 0px 20px !important;
+      width: 100%;
+    }
+  
+    .product-category-items {
+      padding: 0px !important;
+  
+      .product-item1 {
+        color: white;
+        background-color: #000;
+        margin-bottom: 10px;
+        padding: 10px 20px !important;
+        border: 2px orange;
+        width: max-content;
+        border-radius: 5px;
+        cursor: pointer;
+        box-sizing: border-box;
+        display: inline-block;
+        margin: 0px 2px 12px 2px;
+        font-size: 24px;
+      }
+    }
+  }
+  
+  // checkout
+  .checkout-f-amountB {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    .price-name {
+      text-transform: uppercase;
+      align-items: center;
+      letter-spacing: 2px;
+      color: $PrimaryColor;
+    }
+  
+    .price-amt {
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: $PrimaryColor;
+    }
+  }
+  
+  .search-bar {
+    margin: 0;
+  
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 8px 20px;
+      height: 50px;
+      border: 1px solid #c1c1c1;
+      border-radius: 5px;
+      transition: 0.2s;
+      font-size: 15px;
+      outline: 0px;
+    }
+  }
+  
+  .model-fix-container {
+    height: 245px;
+    overflow-y: auto;
+    margin-top: 12px;
+  
+    p {
+      margin: 0px;
+      padding: 5px 10px;
+      color: grey;
+      cursor: pointer;
+      border-radius: 3px;
+  
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+  
+  .checkout-right-portion {
+    padding: 15px;
+    height: 87vh;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  
+    @media screen and (max-width: 767px) {
+      height: auto;
+    }
+  
+    .checkout-product-info {
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+  
+      @media screen and (max-width: 767px) {
+        height: auto;
+      }
+  
+      .checkout-right-table {
+        background-color: #ededed;
+        // min-height: calc(64vh - 70px);
+        margin-bottom: 20px;
+  
+        @media screen and (max-width: 767px) {
+          margin-top: 40px;
+          min-height: auto;
+          padding-bottom: 40px;
+        }
+  
+        .form-control {
+          width: 100%;
+          height: 40px;
+          padding: 5px 10px;
+          border-radius: 4px;
+          box-sizing: border-box;
+          text-align: center;
+        }
+  
+        // .info-table-top {
+        //   h3 {
+        //     border-bottom: 1px solid #fff;
+        //   }
+        // }
+        .tableDown {
+          background-color: $PrimaryColor;
+  
+          &:first-child {
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+          }
+  
+          .MuiGrid-item {
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            padding: 12px;
+            box-sizing: border-box;
+  
+            &:last-child {
+              border-right: none;
+            }
+          }
+        }
+  
+        .product-value-update {
+          align-items: center;
+  
+          .MuiGrid-item {
+            padding: 12px;
+            text-align: center;
+  
+            p {
+              color: grey;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+  
+      h3 {
+        font-size: 16px;
+        text-align: center;
+        color: #fff;
+        padding: 10px;
+      }
+    }
+  }
+  
+  .checkout-bottom-sec {
+    // height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .react-simple-keyboard {
+      margin-right: 15px;
+    }
+  }
+  
+  .checkout-amount-editor {
+    padding-top: 0px;
+    box-sizing: border-box;
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    height: 100%;
+  
+    @media screen and (max-width: 767px) {
+      display: block !important;
+    }
+  
+    .MuiGrid-item {
+      flex: 1 1;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      &:first-child {
+        width: 47%;
+  
+        @media screen and (max-width: 767px) {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+  
+  // Modal layout
+  .form-control {
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+    height: 50px;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    font-size: 15px;
+    outline: 0px;
+    background-color: #f3f2f7;
+  }
+  
+  .modal-layout {
+    position: relative;
+    top: -27vh;
+    background-color: #fff;
+    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%),
+      0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    padding: 16px;
+  
+    &:focus {
+      outline: 0px !important;
+    }
+  
+  
+    .registration-form {
+      width: 100%;
+    }
+  
+    .btn-close-modal {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 25px;
+      height: 25px;
+      background-color: #ff3434;
+      border: none;
+      border-radius: 30px;
+      padding: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+  
+      svg {
+        width: 16px;
+        height: 16px;
+  
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  
+    .modal-title {
+      background-color: $PrimaryColor;
+      padding: 10px;
+      margin-bottom: 40px;
+      position: relative;
+  
+      h2 {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 600;
+        color: #fff;
+      }
+  
+      .btn-icon-box {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 41px;
+        height: 41px;
+        background-color: #fff;
+        border: none;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+  
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  
+    .groups-button {
+      margin-bottom: 30px;
+      justify-content: center;
+  
+      .MuiGrid-item {
+        margin-bottom: 12px;
+        text-align: center;
+        padding: 4px;
+  
+        .MuiButtonBase-root {
+          background-color: #fff;
+          border-color: #e7e7e7 !important;
+          box-shadow: 0px 0px 7px #e6e4e4;
+          padding: 10px 24px;
+          border-radius: 6px !important;
+          width: 100%;
+          white-space: nowrap;
+        }
+      }
+    }
+  
+    .add-now-bttn {
+      justify-content: center;
+  
+      .MuiGrid-item {
+        text-align: center;
+  
+        .btn-outline-grey {
+          margin-right: 15px;
+        }
+  
+        button {
+          width: 100%;
+          font-size: 15px !important;
+          height: 50px;
+          box-shadow: none !important;
+          letter-spacing: 2px;
+          padding: 10px 30px;
+        }
+      }
+    }
+  }
+  
+  .MuiFormGroup-row {
+    .MuiFormControlLabel-root {
+      width: auto !important;
+    }
+  }
+  
+  .search-modal-box {
+    height: 400px;
+  }
+  
+  .active-product {
+    border-color: #000 !important;
+    color: #fff !important;
+  }
