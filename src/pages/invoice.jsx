@@ -249,6 +249,21 @@ const InvoiceSlip = ({ globalSettings,branchToken}) => {
             </td>
           </tr>
           <tr>
+            <td style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: '14px', margin: '0px', fontWeight: '400' }}>
+                PaymentMethod: {invoiceData?.paymenttype}
+              </p>
+            </td>
+          </tr>
+          {invoiceData.authcode !=='' ?<tr>
+            <td style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: '14px', margin: '0px', fontWeight: '400' }}>
+                Authcode: {invoiceData?.authcode}
+              </p>
+            </td>
+          </tr>:null}
+          <br />
+          <tr>
             <td style={{ textAlign: 'left' }}>
               <p style={{ fontSize: '14px', margin: '0px', fontWeight: '400' }}>
                 Date: {invoiceData?.date}
