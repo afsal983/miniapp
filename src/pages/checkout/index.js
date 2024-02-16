@@ -264,23 +264,20 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
       var remember = document.getElementById('chkNotifyMe')
       var authInput = document.getElementsByClassName('auth')
       if(payments){
-        payments.map(async(i)=>{
+        for (const i of payments) {
           if(i.is_authcode === true && i.auth_code === ''){
             alert('Please Enter Auth Code')
+            return
           }else{
-             if (remember.checked) {
-          result = await axios.post(`/instantinvoice?notify=1`, payload);
-        
-      } else {
-        result = await axios.post(`/instantinvoice?notify=0`, payload);
-      }
-      console.log(result.data.data);
-
-      const invoiceId = result.data.data[0].id
-      navigate(`${ROUTES.INVOICE}?id=${invoiceId}`)
-      // print(`${ROUTES.INVOICE}?id=${invoiceId}`)
+            if (remember.checked) {
+              result = await axios.post(`/instantinvoice?notify=1`, payload); 
+            } else {
+              result = await axios.post(`/instantinvoice?notify=0`, payload);
+            }
+            const invoiceId = result.data.data[0].id
+            navigate(`${ROUTES.INVOICE}?id=${invoiceId}`)
           }
-        })
+        }
       }
     
     }
