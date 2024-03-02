@@ -24,6 +24,9 @@ import Keyboard from "react-simple-keyboard";
 import axios from "../../http/axios-auth3";
 import { store } from '../../redux/store';
 import { LoginOutlined } from '@mui/icons-material';
+import Menu from '@mui/material/Menu';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
 const customLayout = {
@@ -74,7 +77,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const ProductCart = ({ branchToken, selectedCustomer, selectedBranch, selectedProductList, setSelectedProductsAction, setSelectedBranchAction }) => {
+const ProductCart = ({ branchToken, selectedCustomer, selectedEmployee, selectedBranch, selectedProductList, setSelectedProductsAction, setSelectedBranchAction }) => {
   const [layoutName, setLayoutName] = React.useState("numbers");
   const [inputName, setInputName] = useState("default");
   const [branchList, setBranchList] = useState([]);
@@ -184,6 +187,7 @@ const ProductCart = ({ branchToken, selectedCustomer, selectedBranch, selectedPr
     setSelectedProductsAction(newArray);
   }
 
+
   const total = selectedProductList.map(item => item.final).reduce((a, b) => a + b, 0);
 
   const branchOption = branchList.map(item => <MenuItem value={item.branch_id}>{item.name}</MenuItem>)
@@ -219,7 +223,7 @@ const ProductCart = ({ branchToken, selectedCustomer, selectedBranch, selectedPr
                 <Grid item md={3}>
                   <Box className="cart-brand-logo">
                     <img
-                      src={'https://app.smeeye.com/assets/images/' + domainId + '_logo.png'}
+                      src={'https://app.smeeye.com/assets/images/' + domainId + "_logo.png"}
                       alt="Salon App"
                       loading="lazy"
                       className="brand-logo"
@@ -227,7 +231,7 @@ const ProductCart = ({ branchToken, selectedCustomer, selectedBranch, selectedPr
                     />
                   </Box>
                 </Grid>
-                <Grid item md={4}>
+                <Grid item md={3}>
                   <Box className="account-credential">
                     <Typography
                       variant="h6"
@@ -248,8 +252,8 @@ const ProductCart = ({ branchToken, selectedCustomer, selectedBranch, selectedPr
                     </Select>
                   </Box>
                 </Grid>
-                <Grid item md={1} className="account-filled-info">
-                  <Button style={{ backgroundColor: '#fda302' }}>
+                <Grid item md={2} className="account-filled-info">
+                  {/*<Button style={{ backgroundColor: '#fda302' }}>
                     <IconButton
                       size="large"
                       edge="end"
@@ -260,7 +264,25 @@ const ProductCart = ({ branchToken, selectedCustomer, selectedBranch, selectedPr
                     >
                       <LoginOutlined />
                     </IconButton>
-                  </Button>
+                  </Button>*/}
+                  <PopupState variant="popover" popupId="demo-popup-menu">
+                    {(popupState) => (
+                      <React.Fragment>
+                        <Button 
+                          variant="outlined"  
+                          sx={{ borderRadius: 28, borderColor: '#fff', color: '#fff', marginInlineStart: '12px', backgroundColor: 'orange'}} 
+                          endIcon={<KeyboardArrowDownIcon />}
+                          {...bindTrigger(popupState)}>
+                          {selectedEmployee.firstname + " " + selectedEmployee.lastname}
+                        </Button>
+                        <Menu {...bindMenu(popupState)}>
+                          {/*<MenuItem onClick={popupState.close}>Profile</MenuItem>*/}
+                          {/*<MenuItem onClick={popupState.close}>My account</MenuItem>*/}
+                          <MenuItem onClick={() => logout()}>Logout</MenuItem>
+                        </Menu>
+                      </React.Fragment>
+                    )}
+                  </PopupState>
                 </Grid>
               </Grid>
               <Box className="cart-item-table-box">
@@ -421,6 +443,7 @@ const ProductCart = ({ branchToken, selectedCustomer, selectedBranch, selectedPr
 
 const mapStateToProps = state => ({
   selectedCustomer: state.base.selectedCustomer,
+  selectedEmployee: state.base.userData,
   selectedBranch: state.base.selectedBranch,
   branchToken: state.base.branchToken,
   selectedProductList: state.base.selectedProductList || [],

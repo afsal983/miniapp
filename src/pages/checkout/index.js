@@ -18,6 +18,10 @@ import AppBar from '@mui/material/AppBar';
 import { LogoutOutlined } from '@mui/icons-material';
 import { ROUTES } from '../../App';
 import { store } from '../../redux/store';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const customLayout = {
   default: [
@@ -48,8 +52,7 @@ const customLayout = {
 };
 
 
-const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globalSettings }) => {
-  // console.log(selectedBranch)
+const Checkout = ({ selectedProductList, selectedCustomer, selectedEmployee, selectedBranch, globalSettings }) => {
   const [data, setData] = useState({
     subTotal: 0,
     calculatedTax: 0,
@@ -70,8 +73,6 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
 
   //Added by Afsal
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
-  // console.log(globalSettings);
 
   useEffect(() => {
     if (!selectedProductList.length) {
@@ -223,7 +224,6 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
         "employeeid": item.employee,
         "deleted": 0
       }));
-      console.log(retails)
       const products = selectedProductList.filter(i => i.type === 1).map(item => ({
         "productid": item.id,
         "price": item.price,
@@ -243,7 +243,6 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
 
 
       const payments = paymentModes.map(i => ({ value: Math.round(i.value), payment_type: i.id,auth_code:i.auth_code,is_authcode:i.is_authcode })).filter(i => Math.round(i.value));
-      console.log(payments + 'pay')
       const payload = {
         "customer": selectedCustomer.id,
         "branch_id": selectedBranch,
@@ -282,7 +281,6 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
     
     }
     catch (error) {
-      console.log(error);
       alert(error?.response?.message || error?.message)
     }
   }
@@ -292,7 +290,6 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
 
       const paymentMode = await axios.get('/paymenttypes');
       await calculateData();
-      // console.log(paymentMode.data.data)
       paymentMode.data.data.map(i => console.log(i.default_paymenttype))
 
 
@@ -437,7 +434,7 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
           >
             Pay ({data.roundedTotal}) {currency.value}
           </Button> */}
-          <IconButton
+          {/*<IconButton
             size="large"
             edge="end"
             color="inherit"
@@ -445,7 +442,25 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
             onClick={() => logout()}
           >
             <LogoutOutlined />
-          </IconButton>
+          </IconButton>*/}
+          <PopupState variant="popover" popupId="demo-popup-menu">
+            {(popupState) => (
+              <React.Fragment>
+                <Button 
+                  variant="outlined"  
+                  sx={{ borderColor: '#fff', color: '#fff', marginLeft: '12px' , borderRadius: 50}} 
+                  endIcon={<KeyboardArrowDownIcon />}
+                  {...bindTrigger(popupState)}>
+                  {selectedEmployee.firstname + " " + selectedEmployee.lastname}
+                </Button>
+                <Menu {...bindMenu(popupState)}>
+                  {/*<MenuItem onClick={popupState.close}>Profile</MenuItem>*/}
+                  {/*<MenuItem onClick={popupState.close}>My account</MenuItem>*/}
+                  <MenuItem onClick={() => logout()}>Logout</MenuItem>
+                </Menu>
+              </React.Fragment>
+            )}
+          </PopupState>
         </Toolbar>
       </AppBar>
       <Grid container>
@@ -791,6 +806,7 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedBranch, globa
 };
 const mapStateToProps = state => ({
   selectedCustomer: state.base.selectedCustomer,
+  selectedEmployee: state.base.userData,
   selectedBranch: state.base.selectedBranch,
   selectedProductList: state.base.selectedProductList || [],
   globalSettings: state.base.globalSettings
