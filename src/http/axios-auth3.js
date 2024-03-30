@@ -5,7 +5,8 @@ import { logout, setEmployeeToken } from '../redux/actions';
 
 
 
-export const BASE_URL = 'https://apis.smeeye.com:9097/api';
+//export const BASE_URL = 'https://apis.smeeye.com:9097/api';
+export const BASE_URL = 'https://devsalonapp.smeeye.com/apiserver';
 axiosRetry(axios, { retries: 3 });
 const instance = axios.create({
   baseURL: BASE_URL,
@@ -19,7 +20,8 @@ const fetchAccessTokenFromRefreshToken = async () => {
     const authToken = storeState && storeState.base?.employeeRefreshToken ? storeState.base.employeeRefreshToken : null;
     const response = await axios({
       method: 'post',
-      url: 'https://apis.smeeye.com:10001/auth/refreshtoken',
+      //url: 'https://apis.smeeye.com:10001/auth/refreshtoken',
+      url: 'https://devsalonapp.smeeye.com/secretkeeper/refreshtoken',
       data: {
         refresh_token: authToken,
       }

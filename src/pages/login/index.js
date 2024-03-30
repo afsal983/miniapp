@@ -55,7 +55,7 @@ const LoginPage = () => {
     }
 
     setLoading(true);
-    axios.post(`/auth/signin`, {
+    axios.post(`/signin`, {
       username: emailValue,
       password: passwordValue,
       remember: 0,

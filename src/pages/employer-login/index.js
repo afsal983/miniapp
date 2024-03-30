@@ -97,7 +97,7 @@ const EmployeeLogin = ({setSettingsAction, branchId, branchRefreshToken, setEmpl
     if (pin?.trim().length > 3) {
       if(pin === originalPin) return;
       setLoader(true);
-      axios2.post(`/auth/pinsignin`, {
+      axios2.post(`/pinsignin`, {
         username: selectedEmployee.email,
         pin: pin,
         refreshtoken: branchRefreshToken

@@ -204,7 +204,7 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedEmployee, sel
     }
     // Disable the button to prevent double-click
     setIsButtonDisabled(true);
-
+    
 
     try {
       if (!selectedProductList.length) {
@@ -262,23 +262,24 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedEmployee, sel
       var result;
       var remember = document.getElementById('chkNotifyMe')
       var authInput = document.getElementsByClassName('auth')
+      
       if(payments){
         for (const i of payments) {
+          
           if(i.is_authcode === true && i.auth_code === ''){
             alert('Please Enter Auth Code')
             return
-          }else{
-            if (remember.checked) {
-              result = await axios.post(`/instantinvoice?notify=1`, payload); 
-            } else {
-              result = await axios.post(`/instantinvoice?notify=0`, payload);
-            }
-            const invoiceId = result.data.data[0].id
-            navigate(`${ROUTES.INVOICE}?id=${invoiceId}`)
           }
         }
       }
-    
+      if (remember.checked) {
+        result = await axios.post(`/instantinvoice?notify=1`, payload); 
+      } else {
+        result = await axios.post(`/instantinvoice?notify=0`, payload);
+      }
+      const invoiceId = result.data.data[0].id
+      navigate(`${ROUTES.INVOICE}?id=${invoiceId}`)
+
     }
     catch (error) {
       alert(error?.response?.message || error?.message)
@@ -609,7 +610,7 @@ const Checkout = ({ selectedProductList, selectedCustomer, selectedEmployee, sel
                       value={item.auth_code}
                       className="form-control inputField auth"
                       onChange={(e) => {
-                        console.log(item)
+                        
                         setAuthCodeValue(item.authKey, e.target.value)
                       }}
                       onFocus={() => {

@@ -223,7 +223,7 @@ const ProductCart = ({ branchToken, selectedCustomer, selectedEmployee, selected
                 <Grid item md={3}>
                   <Box className="cart-brand-logo">
                     <img
-                      src={'https://app.smeeye.com/assets/images/' + domainId + "_logo.png"}
+                      src={'https://app.smeeye.com/assets/images/' + domainId + '_logo.png'}
                       alt="Salon App"
                       loading="lazy"
                       className="brand-logo"
